@@ -1,4 +1,5 @@
 ---
+type: section
 layout: multipage-overview
 title: Auxiliary Class Constructors
 description: This page shows how to write auxiliary Scala class constructors, including several examples of the syntax.
@@ -27,17 +28,17 @@ val DefaultCrustType = "THIN"
 class Pizza (var crustSize: Int, var crustType: String) {
 
     // one-arg auxiliary constructor
-    def this(crustSize: Int) {
+    def this(crustSize: Int) = {
         this(crustSize, DefaultCrustType)
     }
 
     // one-arg auxiliary constructor
-    def this(crustType: String) {
+    def this(crustType: String) = {
         this(DefaultCrustSize, crustType)
     }
 
     // zero-arg auxiliary constructor
-    def this() {
+    def this() = {
         this(DefaultCrustSize, DefaultCrustType)
     }
 

@@ -1,4 +1,5 @@
 ---
+type: section
 layout: multipage-overview
 title: match Expressions
 description: This page shows examples of the Scala 'match' expression, including how to write match/case expressions.
@@ -226,8 +227,8 @@ Here are a few other examples of how you can use `if` expressions in `case` stat
 ```scala
 i match {
   case a if 0 to 9 contains a => println("0-9 range: " + a)
-  case b if 10 to 19 contains b => println("10-19 range: " + a)
-  case c if 20 to 29 contains c => println("20-29 range: " + a)
+  case b if 10 to 19 contains b => println("10-19 range: " + b)
+  case c if 20 to 29 contains c => println("20-29 range: " + c)
   case _ => println("Hmmm...")
 }
 ```

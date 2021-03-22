@@ -3,26 +3,26 @@ layout: tour
 title: Traits
 partof: scala-tour
 
-num: 5
+num: 7
 next-page: tuples
-previous-page: classes
+previous-page: named-arguments
 topics: traits
 prerequisite-knowledge: expressions, classes, generics, objects, companion-objects
 
 redirect_from: "/tutorials/tour/traits.html"
 ---
 
-Traits are used to share interfaces and fields between classes. They are similar to Java 8's interfaces. Classes and objects can extend traits but traits cannot be instantiated and therefore have no parameters.
+Traits are used to share interfaces and fields between classes. They are similar to Java 8's interfaces. Classes and objects can extend traits, but traits cannot be instantiated and therefore have no parameters.
 
 ## Defining a trait
 A minimal trait is simply the keyword `trait` and an identifier:
 
-```tut
+```scala mdoc
 trait HairColor
 ```
 
 Traits become especially useful as generic types and with abstract methods.
-```tut
+```scala mdoc
 trait Iterator[A] {
   def hasNext: Boolean
   def next(): A
@@ -33,7 +33,7 @@ Extending the `trait Iterator[A]` requires a type `A` and implementations of the
 
 ## Using traits
 Use the `extends` keyword to extend a trait. Then implement any abstract members of the trait using the `override` keyword:
-```tut
+```scala mdoc:nest
 trait Iterator[A] {
   def hasNext: Boolean
   def next(): A
@@ -60,7 +60,7 @@ This `IntIterator` class takes a parameter `to` as an upper bound. It `extends I
 
 ## Subtyping
 Where a given trait is required, a subtype of the trait can be used instead.
-```tut
+```scala mdoc
 import scala.collection.mutable.ArrayBuffer
 
 trait Pet {
@@ -78,4 +78,10 @@ animals.append(dog)
 animals.append(cat)
 animals.foreach(pet => println(pet.name))  // Prints Harry Sally
 ```
-The `trait Pet` has an abstract field `name` which gets implemented by Cat and Dog in their constructors. On the last line, we call `pet.name` which must be implemented in any subtype of the trait `Pet`.
+The `trait Pet` has an abstract field `name` that gets implemented by Cat and Dog in their constructors. On the last line, we call `pet.name`, which must be implemented in any subtype of the trait `Pet`.
+
+
+## More resources
+
+* Learn more about traits in the [Scala Book](/overviews/scala-book/traits-intro.html)
+* Use traits to define [Enum](/overviews/scala-book/enumerations-pizza-class.html)

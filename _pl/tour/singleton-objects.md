@@ -3,9 +3,8 @@ layout: tour
 title: Obiekty singleton
 partof: scala-tour
 
-num: 12
+num: 15
 language: pl
-
 next-page: regular-expression-patterns
 previous-page: pattern-matching
 ---
@@ -32,7 +31,7 @@ Duża część obiektów singleton nie istnieje samodzielnie, ale jest powiązan
 
 Klasa i jej obiekt towarzyszący mogą być zdefiniowane tylko w tym samym pliku, przykład:
 
-```tut
+```scala mdoc
 class IntPair(val x: Int, val y: Int)
 
 object IntPair {

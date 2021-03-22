@@ -3,8 +3,7 @@ layout: tour
 title: Pattern Matching
 partof: scala-tour
 
-num: 12
-
+num: 14
 next-page: singleton-objects
 previous-page: case-classes
 prerequisite-knowledge: case-classes, string-interpolation, subtyping
@@ -16,7 +15,7 @@ Pattern matching is a mechanism for checking a value against a pattern. A succes
 
 ## Syntax
 A match expression has a value, the `match` keyword, and at least one `case` clause.
-```tut
+```scala mdoc
 import scala.util.Random
 
 val x: Int = Random.nextInt(10)
@@ -31,14 +30,14 @@ x match {
 The `val x` above is a random integer between 0 and 10. `x` becomes the left operand of the `match` operator and on the right is an expression with four cases. The last case `_` is a "catch all" case for any other possible `Int` values. Cases are also called _alternatives_.
 
 Match expressions have a value.
-```tut
+```scala mdoc
 def matchTest(x: Int): String = x match {
   case 1 => "one"
   case 2 => "two"
   case _ => "other"
 }
-matchTest(3)  // other
-matchTest(1)  // one
+matchTest(3)  // prints other
+matchTest(1)  // prints one
 ```
 This match expression has a type String because all of the cases return String. Therefore, the function `matchTest` returns a String.
 
@@ -46,7 +45,7 @@ This match expression has a type String because all of the cases return String. 
 
 Case classes are especially useful for pattern matching.
 
-```tut
+```scala mdoc
 abstract class Notification
 
 case class Email(sender: String, title: String, body: String) extends Notification
@@ -75,7 +74,7 @@ val someVoiceRecording = VoiceRecording("Tom", "voicerecording.org/id/123")
 
 println(showNotification(someSms))  // prints You got an SMS from 12345! Message: Are you there?
 
-println(showNotification(someVoiceRecording))  // you received a Voice Recording from Tom! Click the link to hear it: voicerecording.org/id/123
+println(showNotification(someVoiceRecording))  // prints You received a Voice Recording from Tom! Click the link to hear it: voicerecording.org/id/123
 ```
 The function `showNotification` takes as a parameter the abstract type `Notification` and matches on the type of `Notification` (i.e. it figures out whether it's an `Email`, `SMS`, or `VoiceRecording`). In the `case Email(sender, title, _)` the fields `sender` and `title` are used in the return value but the `body` field is ignored with `_`.
 
@@ -101,18 +100,18 @@ val someVoiceRecording = VoiceRecording("Tom", "voicerecording.org/id/123")
 val importantEmail = Email("jenny@gmail.com", "Drinks tonight?", "I'm free after 5!")
 val importantSms = SMS("867-5309", "I'm here! Where are you?")
 
-println(showImportantNotification(someSms, importantPeopleInfo)) //prints You got an SMS from 123-4567! Message: Are you there?
-println(showImportantNotification(someVoiceRecording, importantPeopleInfo)) //prints You received a Voice Recording from Tom! Click the link to hear it: voicerecording.org/id/123
-println(showImportantNotification(importantEmail, importantPeopleInfo)) //prints You got an email from special someone!
+println(showImportantNotification(someSms, importantPeopleInfo)) // prints You got an SMS from 123-4567! Message: Are you there?
+println(showImportantNotification(someVoiceRecording, importantPeopleInfo)) // prints You received a Voice Recording from Tom! Click the link to hear it: voicerecording.org/id/123
+println(showImportantNotification(importantEmail, importantPeopleInfo)) // prints You got an email from special someone!
 
-println(showImportantNotification(importantSms, importantPeopleInfo)) //prints You got an SMS from special someone!
+println(showImportantNotification(importantSms, importantPeopleInfo)) // prints You got an SMS from special someone!
 ```
 
 In the `case Email(sender, _, _) if importantPeopleInfo.contains(sender)`, the pattern is matched only if the `sender` is in the list of important people.
 
 ## Matching on type only
 You can match on the type like so:
-```tut
+```scala mdoc
 abstract class Device
 case class Phone(model: String) extends Device {
   def screenOff = "Turning screen off"
@@ -131,7 +130,7 @@ def goIdle(device: Device) = device match {
 ## Sealed classes
 Traits and classes can be marked `sealed` which means all subtypes must be declared in the same file. This assures that all subtypes are known.
 
-```tut
+```scala mdoc
 sealed abstract class Furniture
 case class Couch() extends Furniture
 case class Chair() extends Furniture
@@ -147,3 +146,7 @@ This is useful for pattern matching because we don't need a "catch all" case.
 
 Scala's pattern matching statement is most useful for matching on algebraic types expressed via [case classes](case-classes.html).
 Scala also allows the definition of patterns independently of case classes, using `unapply` methods in [extractor objects](extractor-objects.html).
+
+## More resources
+
+* More details on match expressions in the [Scala Book](/overviews/scala-book/match-expressions.html)

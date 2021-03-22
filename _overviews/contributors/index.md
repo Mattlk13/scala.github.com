@@ -125,7 +125,8 @@ sign the binaries.
 ### Create a Sonatype Account and Project
 
 Follow the instructions given on the [OSSRH Guide](https://central.sonatype.org/pages/ossrh-guide.html#initial-setup)
-to create a new Sonatype account (unless you already have one) and to create a new project ticket. This latter
+to create a new Sonatype account (unless you already have one) and to 
+[create a new project ticket](https://issues.sonatype.org/secure/CreateIssue.jspa?issuetype=21&pid=10134). This latter
 step is where you define the `groupId` that you will release to. You can use a domain name that you already own,
 otherwise a common practice is to use `io.github.(username)` (where `(username)` is replaced with your GitHub
 username).
@@ -215,7 +216,7 @@ $ sbt publishSigned
 
 `sbt-sonatype` will package your project and ask your PGP passphrase to sign the files with your PGP key.
 It will then upload the files to Sonatype using your account credentials. When the task is finished, you can
-check the artifacts in the [Nexus Repository Manager](https://oss.sonatype.org) (under “Staging Repositories”).
+check the artifacts in the [Nexus Repository Manager](https://oss.sonatype.org) (under “Staging Repositories” in the side menu − if you do not see it, make sure you are logged in).
 
 Finally, perform the release with the `sonatypeRelease` sbt task:
 
@@ -495,13 +496,13 @@ For instance, given the following `src/documentation/getting-started.md` file:
 
 First, start with the following import:
 
-```tut
+```scala
 import ch.epfl.scala.Example
 ```
 
 Then, do nothing with something:
 
-```tut
+```scala
 Example.doNothing(42)
 ```
 {% endhighlight %}

@@ -1,4 +1,5 @@
 ---
+type: section
 layout: multipage-overview
 title: Scala Futures
 description: This page provides an introduction to Futures in Scala, including Future callback methods.
@@ -91,10 +92,6 @@ res1: scala.concurrent.Future[Int] = Future(Success(84))
 ```
 
 Notice that the `84` you expected is wrapped in a `Success`, which is further wrapped in a `Future`. This is a key point to know: The value in a `Future` is always an instance of one of the `Try` types: `Success` or `Failure`. Therefore, when working with the result of a future, use the usual `Try`-handling techniques, or one of the other `Future` callback methods.
-
-{::comment}
-NOTE: i couldn’t find a better Partial Function link on docs.scala-lang.org, so i kept the following link for now
-{:/comment}
 
 One commonly used callback method is `onComplete`, which takes a [partial function](https://alvinalexander.com/scala/how-to-define-use-partial-functions-in-scala-syntax-examples) in which you should handle the `Success` and `Failure` cases, like this:
 
@@ -328,7 +325,7 @@ Other useful and well-named methods include:
 - `fallbackTo`
 - `recoverWith`
 
-These methods and many more details are discussed on the [“Futures and Promises” page](/overviews/core/futures.html).
+These methods and many more details are discussed on the [“Futures and Promises” page]({{site.baseurl}}/overviews/core/futures.html).
 
 
 
@@ -342,7 +339,7 @@ While this was a short introduction, hopefully those examples give you an idea o
 - A benefit of futures over threads is that they come with a variety of callback methods that simplify the process of working with concurrent threads,
   including the handling of exceptions and thread management
 - Handle the result of a future with methods like `onComplete`, or combinator methods like `map`, `flatMap`, `filter`, `andThen`, etc.
-- The value in a `Future` is always an instance of one of the `Try` types: `Success` or `Failure
+- The value in a `Future` is always an instance of one of the `Try` types: `Success` or `Failure`
 - If you’re using multiple futures to yield a single result, you’ll often want to combine them in a for-expression
 
 

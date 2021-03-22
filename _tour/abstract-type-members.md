@@ -2,7 +2,7 @@
 layout: tour
 title: Abstract Type Members
 partof: scala-tour
-num: 23
+num: 25
 next-page: compound-types
 previous-page: inner-classes
 topics: abstract type members
@@ -16,7 +16,7 @@ Abstract types, such as traits and abstract classes, can in turn have abstract t
 This means that the concrete implementations define the actual types.
 Here's an example:
 
-```tut
+```scala mdoc
 trait Buffer {
   type T
   val element: T
@@ -24,7 +24,7 @@ trait Buffer {
 ```
 Here we have defined an abstract `type T`. It is used to describe the type of `element`. We can extend this trait in an abstract class, adding an upper-type-bound to `T` to make it more specific.
 
-```tut
+```scala mdoc
 abstract class SeqBuffer extends Buffer {
   type U
   type T <: Seq[U]
@@ -35,7 +35,7 @@ Notice how we can use yet another abstract type `U` in the specification of an u
 
 Traits or [classes](classes.html) with abstract type members are often used in combination with anonymous class instantiations. To illustrate this, we now look at a program which deals with a sequence buffer that refers to a list of integers:
 
-```tut
+```scala mdoc
 abstract class IntSeqBuffer extends SeqBuffer {
   type U = Int
 }
@@ -50,11 +50,11 @@ val buf = newIntSeqBuf(7, 8)
 println("length = " + buf.length)
 println("content = " + buf.element)
 ```
-Here the factory `newIntSeqBuf` uses an anonymous class implementation of `IntSeqBuf` (i.e. `new IntSeqBuffer`) to set the abstract type `T` to the concrete type `List[Int]`.
+Here the factory `newIntSeqBuf` uses an anonymous class implementation of `IntSeqBuffer` (i.e. `new IntSeqBuffer`) to set the abstract type `T` to the concrete type `List[Int]`.
 
 It is also possible to turn abstract type members into type parameters of classes and vice versa. Here is a version of the code above which only uses type parameters:
 
-```tut
+```scala mdoc:nest
 abstract class Buffer[+T] {
   val element: T
 }

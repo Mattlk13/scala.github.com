@@ -1,4 +1,5 @@
 ---
+type: chapter
 layout: multipage-overview
 title: Prelude꞉ A Taste of Scala
 description: This page shares a Taste Of Scala example, quickly covering Scala's main features.
@@ -10,8 +11,6 @@ outof: 54
 previous-page: introduction
 next-page: preliminaries
 ---
-
-<!-- note: the character after the word “Prelude” above is not a colon, it’s a U+A789 -->
 
 Our hope in this book is to demonstrate that [Scala](http://scala-lang.org) is a beautiful, modern, expressive programming language. To help demonstrate that, in this first chapter we’ll jump right in and provide a whirlwind tour of Scala’s main features. After this tour, the book begins with a more traditional “Getting Started” chapter.
 
@@ -32,10 +31,6 @@ Before we jump into the examples, here are a few important things to know about 
 - Scala code results in *.class* files that run on the Java Virtual Machine (JVM)
 - It’s easy to use Java libraries in Scala
 
-<!--
-TODO: see https://github.com/scala/docs.scala-lang/pull/1469#discussion_r310903284
-- It has traits, which are a combination of interfaces and abstract classes that can be used as mixins, and support a modular programming style
--->
 
 
 ## Hello, world

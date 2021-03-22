@@ -3,8 +3,7 @@ layout: tour
 title: Singleton Objects
 partof: scala-tour
 
-num: 13
-
+num: 15
 next-page: regular-expression-patterns
 previous-page: pattern-matching
 redirect_from: "/tutorials/tour/singleton-objects.html"
@@ -17,7 +16,7 @@ As a top-level value, an object is a singleton.
 As a member of an enclosing class or as a local value, it behaves exactly like a lazy val.
 # Defining a singleton object
 An object is a value. The definition of an object looks like a class, but uses the keyword `object`:
-```tut
+```scala mdoc
 object Box
 ```
 
@@ -74,7 +73,7 @@ circle1.area
 The `class Circle` has a member `area` which is specific to each instance, and the singleton `object Circle` has a method `calculateArea` which is available to every instance.
 
 The companion object can also contain factory methods:
-```tut
+```scala mdoc
 class Email(val username: String, val domainName: String)
 
 object Email {
@@ -92,7 +91,7 @@ scalaCenterEmail match {
     s"""Registered an email
        |Username: ${email.username}
        |Domain name: ${email.domainName}
-     """)
+     """.stripMargin)
   case None => println("Error: could not parse email")
 }
 ```
@@ -105,3 +104,7 @@ Note: If a class or object has a companion, both must be defined in the same fil
 `static` members in Java are modeled as ordinary members of a companion object in Scala.
 
 When using a companion object from Java code, the members will be defined in a companion class with a `static` modifier. This is called _static forwarding_. It occurs even if you haven't defined a companion class yourself.
+
+## More resources
+
+* Learn more about Companion objects in the [Scala Book](/overviews/scala-book/companion-objects.html)

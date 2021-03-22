@@ -4,8 +4,8 @@ title: Packages and Imports
 partof: scala-tour
 
 num: 35
-previous-page: named-arguments
 next-page: package-objects
+previous-page: annotations
 ---
 
 # Packages and Imports
@@ -65,7 +65,7 @@ import users.{UserPreferences => UPrefs}  // import and rename for convenience
 
 One way in which Scala is different from Java is that imports can be used anywhere:
 
-```tut
+```scala mdoc
 def sqrtplus1(x: Int) = {
   import scala.math.sqrt
   sqrt(x) + 1.0

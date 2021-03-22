@@ -1,4 +1,5 @@
 ---
+type: section
 layout: multipage-overview
 title: No Null Values
 description: This lesson demonstrates the Scala Option, Some, and None classes, including how to use them instead of null values.
@@ -87,10 +88,6 @@ There are two main answers, depending on your needs:
 - Use a for-expression
 
 >There are other approaches, but these are the two main approaches, especially from an FP standpoint.
-
-{::comment}
-TODO: discuss combinator function approaches
-{:/comment}
 
 
 
@@ -281,11 +278,6 @@ val santa = new Address(
 
 Once you have an optional field like this, you work with it as shown in the previous examples: With `match` expressions, `for` expressions, and other built-in methods like `foreach`.
 
-{::comment}
-TODO: again, mention combinators
-{:/comment}
-
-
 
 
 ## Option isn’t the only solution
@@ -309,10 +301,6 @@ This lesson was a little longer than the others, so here’s a quick review of t
 ## See also
 
 - Tony Hoare invented the null reference in 1965, and refers to it as his “[billion dollar mistake](https://en.wikipedia.org/wiki/Tony_Hoare#Apologies_and_retractions).”
-
-{::comment}
-TODO: link to functional-error-handling.md
-{:/comment}
 
 
 

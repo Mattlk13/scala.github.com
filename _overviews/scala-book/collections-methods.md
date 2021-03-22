@@ -1,4 +1,5 @@
 ---
+type: section
 layout: multipage-overview
 title: Common Sequence Methods
 description: This page shows examples of the most common methods that are available on the Scala sequences (collections classes).
@@ -23,8 +24,7 @@ Because there are so many methods available to you, they won’t all be shown he
 - `tail`
 - `take`, `takeWhile`
 - `drop`, `dropWhile`
-- `find`
-- `reduce`, `fold`
+- `reduce`
 
 The following methods will work on all of the collections “sequence” classes, including `Array`, `ArrayBuffer`, `List`, `Vector`, etc., but these examples will use a `List` unless otherwise specified.
 
@@ -92,13 +92,6 @@ lessThanFive: List[Boolean] = List(true, true, true, true, false, false, false, 
 
 As that last example shows, it’s perfectly legal (and very common) to use map to return a list with a different type (`List[Boolean]`) from the original type (`List[Int]`).
 
-{::comment}
-val doubles = nums.map(_ * 2)
-val lessThanFive = nums.map(_ < 5)
-val capNames = names.map(_.capitalize)
-{:/comment}
-
-
 
 
 ## `filter`
@@ -115,13 +108,6 @@ evens: List[Int] = List(2, 4, 6, 8, 10)
 scala> val shortNames = names.filter(_.length <= 4)
 shortNames: List[String] = List(joel, ed)
 ```
-
-{::comment}
-val lessThanFive = nums.filter(_ < 5)
-val evens = nums.filter(_ % 2 == 0)
-val shortNames = names.filter(_.length <= 4)
-{:/comment}
-
 
 
 

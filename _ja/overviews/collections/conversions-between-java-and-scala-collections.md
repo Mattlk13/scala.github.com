@@ -44,11 +44,11 @@ Scala と同様に、Java
 他の Scala コレクションも Java に変換できるが、元の Scala 型には逆変換できない。それらは以下の通り:
 
     Seq           =>    java.util.List
-    mutable.Seq   =>    java.utl.List
+    mutable.Seq   =>    java.util.List
     Set           =>    java.util.Set
     Map           =>    java.util.Map
 
-Java は可変コレクションと不変コレクションを型で区別しないため、例えば `scala.immutable.List` からの変換は、上書き演算を呼び出すと `UnsupportedOperationException` を発生する `java.util.List` を返す。次に具体例で説明する:
+Java は可変コレクションと不変コレクションを型で区別しないため、例えば `scala.immutable.List` からの変換は、上書き演算を呼び出すと `UnsupportedOperationException` が発生する `java.util.List` を返す。次に具体例で説明する:
 
     scala> val jul = List(1, 2, 3).asJava
     jul: java.util.List[Int] = [1, 2, 3]

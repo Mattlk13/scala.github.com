@@ -3,22 +3,22 @@ layout: tour
 title: By-name Parameters
 partof: scala-tour
 
-num: 31
+num: 33
 next-page: annotations
 previous-page: operators
 
 redirect_from: "/tutorials/tour/by-name-parameters.html"
 ---
 
-_By-name parameters_ are only evaluated when used. They are in contrast to _by-value parameters_. To make a parameter called by-name, simply prepend `=>` to its type.
-```tut
+_By-name parameters_ are evaluated every time they are used. They won't be evaluated at all if they are unused. This is similar to replacing the by-name parameters with the passed expressions. They are in contrast to _by-value parameters_. To make a parameter called by-name, simply prepend `=>` to its type.
+```scala mdoc
 def calculate(input: => Int) = input * 37
 ```
 By-name parameters have the advantage that they are not evaluated if they aren't used in the function body. On the other hand, by-value parameters have the advantage that they are evaluated only once.
 
 Here's an example of how we could implement a while loop:
 
-```tut
+```scala mdoc
 def whileLoop(condition: => Boolean)(body: => Unit): Unit =
   if (condition) {
     body

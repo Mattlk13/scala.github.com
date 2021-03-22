@@ -299,7 +299,7 @@ Let’s detail the implementation of `filter`, step by step:
   concrete collections: they can decide to evaluate in a strict or non-strict way
   the elements resulting from the operation.
 
-The implementation of `map` is similar, excepted that instead of using
+The implementation of `map` is similar, except that instead of using
 `fromSpecific` it uses `from` which takes as parameter an
 iterable whose element type `E` is arbitrary.
 
@@ -329,7 +329,7 @@ trait IterableFactory[+CC[_]] {
 
 Last but not least, as explained in the above sections, since we have four branches
 of template traits, we have four corresponding branches of factories. For instance,
-here are the relevant parts of code of the `map` operation implementation in `Map`:
+here are the relevant parts of code of the `map` operation implementation in `MapOps`:
 
 ~~~ scala
 trait MapOps[K, +V, +CC[_, _], +C]

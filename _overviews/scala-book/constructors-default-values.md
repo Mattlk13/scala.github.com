@@ -1,4 +1,5 @@
 ---
+type: section
 layout: multipage-overview
 title: Supplying Default Values for Constructor Parameters
 description: This page shows how to provide default values for Scala constructor parameters, with several examples.
@@ -62,7 +63,7 @@ As shown in the examples, a third benefit is that it lets consumers construct ne
 
 ## Bonus: Named parameters
 
-Another nice thing about Scala is that you can used named parameters when creating a new instance of a class. For instance, given this class:
+Another nice thing about Scala is that you can use named parameters when creating a new instance of a class. For instance, given this class:
 
 ```scala
 class Socket(var timeout: Int, var linger: Int) {

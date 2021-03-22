@@ -3,7 +3,7 @@ layout: tour
 title: Górne ograniczenia typów
 partof: scala-tour
 
-num: 19
+num: 21
 language: pl
 next-page: lower-type-bounds
 previous-page: variances
@@ -13,7 +13,7 @@ W Scali [parametry typów](generic-classes.html) oraz [typy abstrakcyjne](abstra
 
 Poniższy przykład demonstruje zastosowanie ograniczeń górnych typu dla parametru typu klasy `Cage`:
 
-```tut
+```scala mdoc
 abstract class Animal {
  def name: String
 }

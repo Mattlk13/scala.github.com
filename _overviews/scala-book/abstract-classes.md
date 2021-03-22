@@ -1,4 +1,5 @@
 ---
+type: section
 layout: multipage-overview
 title: Abstract Classes
 description: This page shows how to use abstract classes, including when and why you should use abstract classes.
@@ -96,7 +97,7 @@ Therefore, this example shows how to pass the constructor parameter from the `Do
 
 ```scala
 abstract class Pet (name: String) {
-    def speak { println(s"My name is $name") }
+    def speak: Unit = println(s"My name is $name")
 }
 
 class Dog(name: String) extends Pet(name)

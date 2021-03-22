@@ -1,4 +1,5 @@
 ---
+type: section
 layout: multipage-overview
 title: The ArrayBuffer Class
 description: This page provides examples of how to use the Scala ArrayBuffer class, including adding and removing elements.
@@ -119,8 +120,7 @@ a.clear                              // ArrayBuffer()
 
 val a = ArrayBuffer(9, 10)           // ArrayBuffer(9, 10)
 a.insert(0, 8)                       // ArrayBuffer(8, 9, 10)
-a.insert(0, 6, 7)                    // ArrayBuffer(6, 7, 8, 9, 10)
-a.insertAll(0, Vector(4, 5))         // ArrayBuffer(4, 5, 6, 7, 8, 9, 10)
+a.insertAll(0, Vector(4, 5, 6, 7))   // ArrayBuffer(4, 5, 6, 7, 8, 9, 10)
 a.prepend(3)                         // ArrayBuffer(3, 4, 5, 6, 7, 8, 9, 10)
 a.prepend(1, 2)                      // ArrayBuffer(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 a.prependAll(Array(0))               // ArrayBuffer(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10)

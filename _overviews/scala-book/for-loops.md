@@ -1,4 +1,5 @@
 ---
+type: section
 layout: multipage-overview
 title: for Loops
 description: This page provides an introduction to the Scala 'for' loop, including how to iterate over Scala collections.
@@ -106,21 +107,6 @@ ratings.foreach {
     case(movie, rating) => println(s"key: $movie, value: $rating")
 }
 ```
-
-
-{::comment}
-TODO: discuss side effects and the `foreach` signature
-
-def foreach(f: (A) => Unit): Unit
-
-When i first started working with Scala i used `foreach` quite a bit, but once i learned about functional programming i quit using `foreach`. (Mainly because it’s only used for *side effects*.) Therefore, i’m not going to discuss the `case` syntax in this example. (i will discuss `case` clauses later in this book.)
-{:/comment}
-
-
-
-
-
-
 
 
 

@@ -3,7 +3,7 @@ layout: tour
 title: Metody polimorficzne
 partof: scala-tour
 
-num: 27
+num: 29
 language: pl
 next-page: type-inference
 previous-page: implicit-conversions
@@ -13,7 +13,7 @@ Metody w Scali mogą być parametryzowane zarówno przez wartości, jak i typy. 
 
 Przykład poniżej:
 
-```tut
+```scala mdoc
 def dup[T](x: T, n: Int): List[T] = {
   if (n == 0)
     Nil

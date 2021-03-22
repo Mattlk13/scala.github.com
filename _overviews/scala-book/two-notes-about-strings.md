@@ -1,4 +1,5 @@
 ---
+type: section
 layout: multipage-overview
 title: Two Notes About Strings
 description: This page shares two important notes about strings in Scala.
@@ -62,7 +63,7 @@ A few other benefits of string interpolation are:
 - The `raw` interpolator performs no escaping of literals (such as `\n`) within the string
 - You can create your own string interpolators
 
-See the [string interpolation documentation](/overviews/core/string-interpolation.html) for more details.
+See the [string interpolation documentation]({{site.baseurl}}/overviews/core/string-interpolation.html) for more details.
 
 
 
@@ -109,17 +110,6 @@ our fathers ...
 ```
 
 Because this is what you generally want, this is a common way to create multiline strings.
-
-
-
-{::comment}
-There are many more cool things you can do with strings. See my [collection of over 100 Scala string examples](alvinalexander.com/scala/scala-string-examples-collection-cheat-sheet) for more details and examples.
-{:/comment}
-
-
-
-
-
 
 
 

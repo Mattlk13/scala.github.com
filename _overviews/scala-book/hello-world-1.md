@@ -1,4 +1,5 @@
 ---
+type: section
 layout: multipage-overview
 title: Hello, World
 description: This page shares a Scala 'Hello, world' example.
@@ -67,7 +68,7 @@ That Scala code is pretty much the same as this Java code:
 ```java
 public class Hello {
     public static void main(String[] args) {
-        System.out.println("Hello, world")
+        System.out.println("Hello, world");
     }
 }
 ```
@@ -86,42 +87,6 @@ public final class Hello {
 ````
 
 As that output shows, the `javap` command reads that *.class* file just as if it was created from Java source code. Scala code runs on the JVM and can use existing Java libraries — and both are terrific benefits for Scala programmers.
-
-
-
-<!--
-### Peaking behind the curtain
-
-To be more precise, what happens is that Scala source code is initially compiled to Java source code, and then that source code is turned into bytecode that works with the JVM.
-
-TODO: Add some more details here, such as what i have at this link.
-
-If you’re interested in more details on this process right now, see the “Using scalac print options” section of [How to disassemble and decompile Scala code](alvinalexander.com/scala/how-to-disassemble-decompile-scala-source-code-javap-scalac-jad) tutorial.
--->
-
-
-<!--
-This is what the output looks like when you run `javap` on the `Hello$.class` file:
-
-````
-$ javap Hello\$.class
-Compiled from "Hello.scala"
-public final class Hello$ {
-  public static Hello$ MODULE$;
-  public static {};
-  public void main(java.lang.String[]);
-}
-````
--->
-
-
-
-
-
-
-
-
-
 
 
 

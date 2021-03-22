@@ -3,10 +3,10 @@ layout: tour
 title: Cechy
 partof: scala-tour
 
-num: 5
+num: 7
 language: pl
 next-page: tuples
-previous-page: classes
+previous-page: named-arguments
 ---
 
 Cechy (Traits) są używane, aby współdzielić interfejsy i pola pomiędzy klasami.
@@ -18,13 +18,13 @@ Z tego powodu cechy nie przyjmują parametrów wartości.
 
 Minimalna definicja cechy składa się ze słowa kluczowego `trait` oraz identyfikatora.
 
-```tut
+```scala mdoc
 trait HairColor
 ```
 
 Cechy są szczególnie przydatne jako generyczne typy zawierające abstrakcyjne metody.
 
-```tut
+```scala mdoc
 trait Iterator[A] {
   def hasNext: Boolean
   def next(): A
@@ -39,7 +39,7 @@ Aby rozszerzyć cechę należy użyć słowa kluczowego `extends`.
 Następnie wymagane jest zaimplementowanie abstrakcyjnych składników danej cechy używając słowa kluczowego `override.`
 
 {% scalafiddle %}
-```tut
+```scala mdoc:nest
 trait Iterator[A] {
   def hasNext: Boolean
   def next(): A
@@ -70,7 +70,7 @@ Klasa `IntIterator` przyjmuje parametr `to` (do) jako ograniczenie górne, oraz 
 Jeżeli w jakimś miejscu wymagana jest cecha pewnego typu, to zamiast niej można użyć jej podtypu.
 
 {% scalafiddle %}
-```tut
+```scala mdoc
 import scala.collection.mutable.ArrayBuffer
 
 trait Pet {

@@ -3,7 +3,7 @@ layout: tour
 title: Multiple Parameter Lists (Currying)
 partof: scala-tour
 
-num: 10
+num: 12
 next-page: case-classes
 previous-page: nested-functions
 
@@ -14,10 +14,14 @@ Methods may have multiple parameter lists.
 
 ### Example
 
-Here is an example, as defined on the `TraversableOnce` trait in Scala's collections API:
+Here is an example, as defined on the `Iterable` trait in Scala's collections API:
 
-```
-def foldLeft[B](z: B)(op: (B, A) => B): B
+```scala
+trait Iterable[A] {
+  ...
+  def foldLeft[B](z: B)(op: (B, A) => B): B
+  ...
+}
 ```
 
 `foldLeft` applies a two-parameter function `op` to an initial value `z` and all elements of this collection, going left to right. Shown below is an example of its usage.
@@ -25,7 +29,7 @@ def foldLeft[B](z: B)(op: (B, A) => B): B
 Starting with an initial value of 0, `foldLeft` here applies the function `(m, n) => m + n` to each element in the List and the previous accumulated value.
 
 {% scalafiddle %}
-```tut
+```scala mdoc
 val numbers = List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 val res = numbers.foldLeft(0)((m, n) => m + n)
 println(res) // 55
@@ -36,29 +40,45 @@ println(res) // 55
 
 Suggested use cases for multiple parameter lists include:
 
-#### Single functional parameter
+#### Drive type inference
 
-In case of a single functional parameter, like `op` in the case of `foldLeft` above, multiple parameter lists allow a concise syntax to pass an anonymous function to the method. Without multiple parameter lists, the code would look like this:
+It so happens that in Scala, type inference proceeds one parameter list at a time.
+Say you have the following method:
 
-```
-numbers.foldLeft(0, (m: Int, n: Int) => m + n)
-```
-
-Note that the use of multiple parameter lists here also allows us to take advantage of Scala type inference to make the code more concise, like this:
-
-```
-numbers.foldLeft(0)(_ + _)
+```scala mdoc
+def foldLeft1[A, B](as: List[A], b0: B, op: (B, A) => B) = ???
 ```
 
-this would not be possible with only a single parameter list, as the Scala compiler would not be able to infer the parameter types of the function.
+Then you'd like to call it in the following way, but will find that it doesn't compile:
+
+```scala mdoc:fail
+def notPossible = foldLeft1(numbers, 0, _ + _)
+```
+
+you will have to call it like one of the below ways:
+
+```scala mdoc
+def firstWay = foldLeft1[Int, Int](numbers, 0, _ + _)
+def secondWay = foldLeft1(numbers, 0, (a: Int, b: Int) => a + b)
+```
+
+That's because Scala won't be able to infer the type of the function `_ + _`, as it's still inferring `A` and `B`. By moving the parameter `op` to its own parameter list, `A` and `B` are inferred in the first parameter list. These inferred types will then be available to the second parameter list and `_ + _` will match the inferred type `(Int, Int) => Int`
+
+```scala mdoc
+def foldLeft2[A, B](as: List[A], b0: B)(op: (B, A) => B) = ???
+def possible = foldLeft2(numbers, 0)(_ + _)
+```
+
+This definition doesn't need any type hints and can infer all of its type parameters.
+
 
 #### Implicit parameters
 
-To specify only certain parameters as `implicit`, they must be placed in their own `implicit` parameter list.
+To specify only certain parameters as [`implicit`](https://docs.scala-lang.org/tour/implicit-parameters.html), they must be placed in their own `implicit` parameter list.
 
 An example of this is:
 
-```
+```scala mdoc
 def execute(arg: Int)(implicit ec: scala.concurrent.ExecutionContext) = ???
 ```
 
@@ -68,13 +88,13 @@ When a method is called with a fewer number of parameter lists, then this will y
 
 For example,
 
-```tut
+```scala mdoc:nest
 val numbers = List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 val numberFunc = numbers.foldLeft(List[Int]()) _
 
 val squares = numberFunc((xs, x) => xs :+ x*x)
-print(squares) // List(1, 4, 9, 16, 25, 36, 49, 64, 81, 100)
+println(squares) // List(1, 4, 9, 16, 25, 36, 49, 64, 81, 100)
 
 val cubes = numberFunc((xs, x) => xs :+ x*x*x)
-print(cubes)  // List(1, 8, 27, 64, 125, 216, 343, 512, 729, 1000)
+println(cubes)  // List(1, 8, 27, 64, 125, 216, 343, 512, 729, 1000)
 ```

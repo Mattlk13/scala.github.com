@@ -1,4 +1,5 @@
 ---
+type: section
 layout: multipage-overview
 title: Using Scala Traits Like Abstract Classes
 description: This page shows how to use Scala traits just like abstract classes in Java, with examples of concrete and abstract methods.
@@ -22,12 +23,12 @@ To demonstrate this, here’s a Scala trait that has a concrete method named `sp
 
 ```scala
 trait Pet {
-    def speak { println("Yo") }   // concrete implementation of a speak method
+    def speak = println("Yo")     // concrete implementation of a speak method
     def comeToMaster(): Unit      // abstract
 }
 ```
 
-When a class extends a trait, each defined method must be implemented, so here’s a class that extends `Pet` and defines `comeToMaster`:
+When a class extends a trait, each abstract method must be implemented, so here’s a class that extends `Pet` and defines `comeToMaster`:
 
 ```scala
 class Dog(name: String) extends Pet {

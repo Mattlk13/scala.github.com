@@ -3,10 +3,10 @@ layout: tour
 title: Domyślne wartości parametrów
 partof: scala-tour
 
-num: 32
+num: 5
 language: pl
 next-page: named-arguments
-previous-page: annotations
+previous-page: classes
 ---
 
 Scala zezwala na określenie domyślnych wartości dla parametrów, co pozwala wyrażeniu wywołującemu ją na pominięcie tych parametrów.
@@ -50,7 +50,7 @@ Mimo że powstrzymuje to nas od powtarzania się, to podejście nie jest zbyt wy
 
 Scala wprowadza bezpośrednie wsparcie dla domyślnych parametrów:
 
-```tut
+```scala mdoc
 class HashMap[K,V](initialCapacity: Int = 16, loadFactor: Float = 0.75f) {
 }
 

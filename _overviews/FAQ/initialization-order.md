@@ -2,13 +2,11 @@
 layout: multipage-overview
 title: Why is my abstract or overridden val null?
 overview-name: FAQ
-partof: FAQ
-
-num: 9
 permalink: /tutorials/FAQ/:title.html
 ---
 
 ## Example
+
 To understand the problem, let's pick the following concrete example.
 
     abstract class A {
@@ -123,6 +121,8 @@ Note that using multiple lazy vals creates a new risk: cycles among lazy vals ca
     // C: hello, dad
 
 Early definitions are a bit unwieldy, there are limitations as to what can appear and what can be referenced in an early definitions block, and they don't compose as well as lazy vals: but if a lazy val is undesirable, they present another option.  They are specified in SLS 5.1.6.
+
+Note that early definitions are deprecated in Scala 2.13; they will be replaced by trait parameters in Scala 3. So, early definitions are not recommended for use if future compatibility is a concern.
 
 #### Use constant value definitions ####
     abstract class A {

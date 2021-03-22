@@ -1,4 +1,5 @@
 ---
+type: section
 layout: multipage-overview
 title: Tuples
 description: This page is an introduction to the Scala 'tuple' data type, showing examples of how to use tuples in your Scala code.
@@ -74,7 +75,7 @@ Another cool approach is to access them like this:
 scala> val(x, y, z) = (3, "Three", new Person("David"))
 x: Int = 3
 y: String = Three
-z: Person = Person(Al)
+z: Person = Person(David)
 ```
 
 Technically this approach involves a form of pattern-matching, and it’s a great way to assign tuple elements to variables.
